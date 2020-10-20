@@ -10,7 +10,7 @@ let userID;
 const myVideo = document.createElement('video')
 myVideo.muted = true;
 const peers = {}
-
+let userName;
 
 navigator.mediaDevices.getUserMedia({
     video: true,
@@ -39,11 +39,12 @@ navigator.mediaDevices.getUserMedia({
         }
     });
     socket.on("createMessage", message => {
-        console.log(message);
-        $("ul").append(`<li class="message"><b>${userID}</b><br/>${message}</li>`);
+        $("ul").append(`<li class="message"><b>${userName}</b><br/>${message}</li>`);
         scrollToBottom()
     })
 })
+
+
 
 socket.on('user-disconnected', userId => {
     if (peers[userId]) peers[userId].close()
@@ -75,7 +76,13 @@ function addVideoStream(video, stream) {
     videoGrid.append(video)
 }
 
+const sendMessege = () => {
 
+    var text = document.getElementById("chat_message").value;
+    console.log(text);
+    socket.emit('message', text);
+    document.getElementById("chat_message").value = '';
+}
 
 const scrollToBottom = () => {
     var d = $('.main__chat_window');
