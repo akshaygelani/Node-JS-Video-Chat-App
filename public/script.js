@@ -10,6 +10,8 @@ let userID;
 const myVideo = document.createElement('video')
 myVideo.muted = true;
 const peers = {}
+
+
 navigator.mediaDevices.getUserMedia({
     video: true,
     audio: true
@@ -37,6 +39,7 @@ navigator.mediaDevices.getUserMedia({
         }
     });
     socket.on("createMessage", message => {
+        console.log(message);
         $("ul").append(`<li class="message"><b>${userID}</b><br/>${message}</li>`);
         scrollToBottom()
     })
