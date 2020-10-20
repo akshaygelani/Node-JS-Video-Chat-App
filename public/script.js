@@ -78,11 +78,21 @@ function addVideoStream(video, stream) {
 
 const sendMessege = () => {
 
+    // if(userName ='')
+    // {
+    //     showAlertDialog();
+    // }
+
     var text = document.getElementById("chat_message").value;
     console.log(text);
     socket.emit('message', text);
     document.getElementById("chat_message").value = '';
 }
+
+
+// document.getElementById("close-window").addEventListener("click", function () {
+//     window.close();
+// });
 
 const scrollToBottom = () => {
     var d = $('.main__chat_window');
