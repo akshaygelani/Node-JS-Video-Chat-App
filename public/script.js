@@ -10,7 +10,7 @@ let userID;
 const myVideo = document.createElement('video')
 myVideo.muted = true;
 const peers = {}
-let userName;
+let userName = null;
 
 navigator.mediaDevices.getUserMedia({
     video: true,
@@ -34,8 +34,7 @@ navigator.mediaDevices.getUserMedia({
     // when press enter send message
     $('html').keydown(function (e) {
         if (e.which == 13 && text.val().length !== 0) {
-            socket.emit('message', text.val());
-            text.val('')
+            sendMessege();
         }
     });
     socket.on("createMessage", message => {
@@ -78,21 +77,24 @@ function addVideoStream(video, stream) {
 
 const sendMessege = () => {
 
-    // if(userName ='')
-    // {
-    //     showAlertDialog();
-    // }
-
-    var text = document.getElementById("chat_message").value;
-    console.log(text);
-    socket.emit('message', text);
-    document.getElementById("chat_message").value = '';
+    if (userName == null) {
+        showAlertDialog();
+        sendMessege();
+    } else {
+        var text = document.getElementById("chat_message").value;
+        if (text.length !== 0) {
+            socket.emit('message', text);
+            document.getElementById("chat_message").value = '';
+        }
+    }
 }
 
-
-// document.getElementById("close-window").addEventListener("click", function () {
-//     window.close();
-// });
+const showAlertDialog = () => {
+    var person = prompt("Please enter your name:", "");
+    if (person != null || person != "") {
+        userName = person;
+    }
+}
 
 const scrollToBottom = () => {
     var d = $('.main__chat_window');

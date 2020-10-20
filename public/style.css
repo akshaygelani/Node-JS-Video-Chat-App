@@ -37,9 +37,25 @@ video {
     align-items: center;
     padding: 40px;
 }
-.send_button{
-        color: #D2D2D2;
 
+.send_button {
+    display: flex;
+    align-items: center;
+    color: #D2D2D2;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 8px 10px;
+    min-width: 80px;
+    cursor: pointer;
+}
+
+.send_button:hover {
+    background-color: #343434;
+    border-radius: 5px;
+}
+
+.send_button i {
+    font-size: 24px;
 }
 .main__controls {
     background-color: #1C1E20;
@@ -53,7 +69,7 @@ video {
 .main__controls {
     color: #D2D2D2;
     display: flex;
-    justify-content: space-between;
+    justify-content:center;
     padding: 5px;
 }
 
@@ -87,7 +103,7 @@ video {
 }
 
 .main__header {
-    padding-top: 5px;
+    padding-top: 12px;
     color: #F5F5F5;
     text-align: center;
 }
@@ -103,7 +119,7 @@ video {
 }
 
 .main__message_container {
-    padding: 22px 12px;
+    padding: 20px 12px;
     display: flex;
 }
 
@@ -115,9 +131,6 @@ video {
     color: #F5F5F5;
 }
 
-.leave_meeting {
-    color: #EB534B;
-}
 
 .unmute, .stop {
     color: #CC3B33;

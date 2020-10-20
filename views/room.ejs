@@ -24,8 +24,8 @@
     <script>
 
         function leaveMeeting() {
-            window.top.close();
-
+            var popup = window.open(location, '_blank', '');
+            popup.close();
         }
 
     </script>
@@ -50,12 +50,6 @@
                         <span>Stop Video</span>
                     </div>
                 </div>
-
-                <div class="main__controls__block">
-                    <div class="main__controls__button" onclick="leaveMeeting()">
-                        <span class="leave_meeting">Leave Meeting</span>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="main__right">
@@ -71,8 +65,11 @@
             <div class="main__message_container">
                 <input id="chat_message" type="text" placeholder="Type message here...">
 
-                <div class="main__controls__button send_button" onclick="sendMessege()">
+                <div class="send_button" onclick="sendMessege()">
+                    <span>Send</span>
                     <i class="fa fa-chevron-right" aria-hidden="true"></i>
+
+
                 </div>
             </div>
         </div>
