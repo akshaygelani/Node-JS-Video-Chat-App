@@ -10,7 +10,7 @@ let userID;
 const myVideo = document.createElement('video')
 myVideo.muted = true;
 const peers = {}
-let userName = null;
+let userName = "User";
 
 navigator.mediaDevices.getUserMedia({
     video: true,
@@ -42,7 +42,6 @@ navigator.mediaDevices.getUserMedia({
         scrollToBottom()
     })
 })
-
 
 
 socket.on('user-disconnected', userId => {
